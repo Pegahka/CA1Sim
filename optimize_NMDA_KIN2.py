@@ -6,12 +6,10 @@ import random
 """
 This simulation uses scipy.optimize to iterate through NMDA_KIN mechanism parameters to fit target EPSP kinetics.
 """
-#morph_filename = 'EB1-early-bifurcation.swc'
+
 morph_filename = 'EB2-late-bifurcation.swc'
 
-#mech_filename = '043015 pas_exp_scale kdr ka_scale ih_sig_scale - EB2'
-#mech_filename = '072515 optimized basal ka_scale dend_sh_ar_nas - EB2'
-mech_filename = '102915 interim dendritic excitability'
+mech_filename = '043016 Type A - km2_NMDA_KIN5_Pr'
 
 
 def synaptic_kinetics_error(x, plot=0):
