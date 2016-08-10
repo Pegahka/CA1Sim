@@ -5,11 +5,10 @@ import os
 Builds a cell locally so each engine is ready to receive jobs one at a time, specified by an index corresponding to
 which synapse to stimulate (coarse sampling of the full set of spines).
 """
-#morph_filename = 'EB1-early-bifurcation.swc'
+
 morph_filename = 'EB2-late-bifurcation.swc'
 
-#mech_filename = '042015 pas_ka_scale kdr - EB2'
-mech_filename = '080615 rebalanced na_ka ampa nmda - EB2'
+mech_filename = '043016 Type A - km2_NMDA_KIN5_Pr'
 
 rec_filename = 'output'+datetime.datetime.today().strftime('%m%d%Y%H%M')+'-pid'+str(os.getpid())
 

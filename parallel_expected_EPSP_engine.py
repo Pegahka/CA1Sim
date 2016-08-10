@@ -6,11 +6,11 @@ import os
 Builds a cell locally so each engine is ready to receive jobs one at a time, specified by an index corresponding to
 which synapse to stimulate (all spines), for comparing Expected to Actual depolarization.
 """
-#morph_filename = 'EB1-early-bifurcation.swc'
+
 morph_filename = 'EB2-late-bifurcation.swc'
 
 # exponential ampar conductance gradient applied to trunk; inheritance applied to apical and tuft; constant basal
-mech_filename = '050715 pas_exp_scale kdr ka_scale ih_sig_scale ampar_exp_scale nmda - EB2'
+mech_filename = '043016 Type A - km2_NMDA_KIN5_Pr'
 
 rec_filename = 'output'+datetime.datetime.today().strftime('%m%d%Y%H%M')+'-pid'+str(os.getpid())
 

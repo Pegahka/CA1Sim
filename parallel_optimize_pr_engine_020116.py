@@ -7,14 +7,10 @@ from ipyparallel import interactive
 Builds a cell locally so each engine is ready to receive jobs one at a time, specified by an index corresponding to
 which synapse to optimize (coarse sampling of the full set of spines).
 """
-# morph_filename = 'EB1-early-bifurcation.swc'
+
 morph_filename = 'EB2-late-bifurcation.swc'
-# mech_filename = '052915 pas_exp_scale kdr ka_scale ih_sig_scale ampar_exp_scale nmda - EB2'
-# mech_filename = '080615 rebalanced na_ka ampa nmda - EB2'
-# mech_filename = '103115 interim dendritic excitability ampa nmda_kin3'
-# mech_filename = '012816 altered intrinsic properties - ampa nmda_kin4'
-mech_filename = '020516 altered km2 rinp - ampa nmda_kin5'
-# rec_filename = 'output'+datetime.datetime.today().strftime('%m%d%Y%H%M')+'-pid'+str(os.getpid())
+
+mech_filename = '043016 Type A - km2_NMDA_KIN5_Pr'
 
 param_names = ['f', 'tau_F', 'd1', 'tau_D1']
 x = []  # placeholder for optimization parameters, must be pushed to each engine at each iteration
