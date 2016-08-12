@@ -1,6 +1,10 @@
 I) To install on a local machine:
 
 1) install anaconda python, includes ipython, numpy, matplotlib
+https://docs.continuum.io/anaconda/install
+
+add additional ipyparallel package:
+conda install ipyparallel
 
 2) download neuron from:
 http://www.neuron.yale.edu/ftp/neuron/versions/alpha/nrn-7.4.rel-1390.tar.gz
