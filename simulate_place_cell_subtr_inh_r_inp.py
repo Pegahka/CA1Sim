@@ -251,7 +251,8 @@ local_random = random.Random()
 local_random.seed(synapses_seed)
 
 cell = CA1_Pyr(morph_filename, mech_filename, full_spines=True)
-cell.set_terminal_branch_na_gradient()
+# cell.set_terminal_branch_na_gradient()
+cell.zero_na()
 cell.insert_inhibitory_synapses_in_subset()
 
 trunk_bifurcation = [trunk for trunk in cell.trunk if cell.is_bifurcation(trunk, 'trunk')]
