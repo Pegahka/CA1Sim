@@ -3,7 +3,7 @@ TITLE I-h channel from Magee 1998 for distal dendrites
 NEURON {
 	SUFFIX h
 	NONSPECIFIC_CURRENT i
-    RANGE ghbar, vhalfl, eh
+    RANGE ghbar, vhalfl, eh, g
     RANGE linf,taul
 }
 

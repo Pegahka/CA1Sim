@@ -109,6 +109,7 @@ def run_trial(simiter):
         f.create_group(str(simiter))
         f[str(simiter)].create_group('train')
         f[str(simiter)].create_group('inh_train')
+        f[str(simiter)].create_group('g_sum')
         f[str(simiter)].attrs['phase_offset'] = global_phase_offset / 2. / np.pi * global_theta_cycle_duration
     if mod_inh > 0:
         if mod_inh == 1:
@@ -194,6 +195,11 @@ def run_trial(simiter):
                                 data=np.subtract(syn.netcon('AMPA_KIN').get_recordvec().to_python(),
                                                  equilibrate + track_equilibrate))
                     index += 1
+        # save the sums of recorded membrane conductances
+        for param in ['g_h', 'gka_kap']:
+            f[str(simiter)]['g_sum'].create_dataset(param, compression='gzip', compression_opts=9,
+                                                    data=np.sum([rec['vec'] for rec in sim.rec_list if
+                                                                 rec['description'] == param], axis=0))
         # save the spike output of the cell, removing the equilibration offset
         f[str(simiter)].create_dataset('output', compression='gzip', compression_opts=9,
                                     data=np.subtract(cell.spike_detector.get_recordvec().to_python(),
@@ -251,8 +257,8 @@ local_random = random.Random()
 local_random.seed(synapses_seed)
 
 cell = CA1_Pyr(morph_filename, mech_filename, full_spines=True)
-# cell.set_terminal_branch_na_gradient()
-cell.zero_na()
+cell.set_terminal_branch_na_gradient()
+#  cell.zero_na()
 cell.insert_inhibitory_synapses_in_subset()
 
 trunk_bifurcation = [trunk for trunk in cell.trunk if cell.is_bifurcation(trunk, 'trunk')]
@@ -306,6 +312,11 @@ sim.parameters['stim_dt'] = stim_dt
 sim.append_rec(cell, cell.tree.root, description='soma', loc=0.)
 sim.append_rec(cell, trunk_bifurcation[0], description='proximal_trunk', loc=1.)
 sim.append_rec(cell, trunk, description='distal_trunk', loc=1.)
+for node in cell.soma+cell.axon+cell.basal+cell.trunk+cell.apical:
+    for param in ['g_h', 'gka_kap']:
+        if hasattr(node.sec, param):
+            for seg in [seg for seg in node.sec if cell.get_distance_to_node(cell.tree.root, node, loc=seg.x) <= 50.]:
+                sim.append_rec(cell, node, loc=seg.x, object=seg, param='_ref_'+param, description=param)
 spike_output_vec = h.Vector()
 cell.spike_detector.record(spike_output_vec)
 
