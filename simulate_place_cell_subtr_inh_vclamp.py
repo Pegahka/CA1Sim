@@ -305,6 +305,7 @@ clamp = h.SEClamp(cell.tree.root.sec(0.))
 clamp.dur1=duration
 clamp.rs = 30.
 clamp.amp1 = VC_command
+sim.parameters['VC_command'] = VC_command
 sim.append_rec(cell, cell.tree.root, loc=0., object=clamp, param='_ref_i', description='i_VC')
 spike_output_vec = h.Vector()
 cell.spike_detector.record(spike_output_vec)
