@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="791eebe4-deb6-4054-9bab-f31748e56665" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/batch_place_cell_subtr_inh_vclamp.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/simulate_place_cell_subtr_inh_vclamp.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/batch_place_cell_r_inp.sh" afterPath="$PROJECT_DIR$/batch_place_cell_r_inp.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/h.mod" afterPath="$PROJECT_DIR$/h.mod" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simulate_place_cell_subtr_inh_r_inp.py" afterPath="$PROJECT_DIR$/simulate_place_cell_subtr_inh_r_inp.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot_NMDAR_kinetics.py" afterPath="$PROJECT_DIR$/plot_NMDAR_kinetics.py" />
     </list>
     <ignored path="master.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,21 +28,61 @@
       <file leaf-file-name="batch_place_cell_r_inp.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/batch_place_cell_r_inp.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1530">
-              <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
+            <state relative-caret-position="595">
+              <caret line="102" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="102" selection-end-column="147" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="simulate_place_cell_subtr_inh_r_inp.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="simulate_place_cell_subtr_inh_r_inp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simulate_place_cell_subtr_inh_r_inp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="303" column="0" selection-start-line="303" selection-start-column="0" selection-end-line="303" selection-end-column="0" />
+            <state relative-caret-position="895">
+              <caret line="458" column="67" selection-start-line="406" selection-start-column="0" selection-end-line="458" selection-end-column="67" />
               <folding>
                 <element signature="e#25#52#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simulate_place_cell_subtr_inh.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simulate_place_cell_subtr_inh.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simulate_place_cell_subtr_inh_vclamp.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/simulate_place_cell_subtr_inh_vclamp.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="batch_place_cell_subtr_inh_vclamp.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/batch_place_cell_subtr_inh_vclamp.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1411">
+              <caret line="102" column="136" selection-start-line="102" selection-start-column="136" selection-end-line="102" selection-end-column="136" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plot_NMDAR_kinetics.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plot_NMDAR_kinetics.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="60" column="14" selection-start-line="57" selection-start-column="0" selection-end-line="60" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,17 +97,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="optimize_dendritic_excitability_020416.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/optimize_dendritic_excitability_020416.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12673">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -84,6 +121,10 @@
         <option value="$PROJECT_DIR$/h.mod" />
         <option value="$PROJECT_DIR$/simulate_place_cell_subtr_inh_r_inp.py" />
         <option value="$PROJECT_DIR$/batch_place_cell_r_inp.sh" />
+        <option value="$PROJECT_DIR$/test_local.py" />
+        <option value="$PROJECT_DIR$/plot_NMDAR_kinetics.py" />
+        <option value="$PROJECT_DIR$/simulate_place_cell_subtr_inh_vclamp.py" />
+        <option value="$PROJECT_DIR$/batch_place_cell_subtr_inh_vclamp.sh" />
       </list>
     </option>
   </component>
@@ -155,6 +196,11 @@
         <option name="mySdkHome" value="/anaconda/bin/python.app" />
       </console-settings>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="BashConfigurationType" factoryName="Bash">
@@ -321,7 +367,14 @@
       <option name="project" value="LOCAL" />
       <updated>1474061170689</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="092216: Simulations probing somatic input resistance and perisomatic membrane conductances (h and kap).">
+      <created>1474571463684</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1474571463684</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -331,6 +384,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35836178" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297561" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -343,7 +397,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -360,7 +413,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="091616: Simulations recording somatic input resistance in the absence of sodium channels." />
-    <option name="LAST_COMMIT_MESSAGE" value="091616: Simulations recording somatic input resistance in the absence of sodium channels." />
+    <MESSAGE value="092216: Simulations probing somatic input resistance and perisomatic membrane conductances (h and kap)." />
+    <option name="LAST_COMMIT_MESSAGE" value="092216: Simulations probing somatic input resistance and perisomatic membrane conductances (h and kap)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -389,6 +443,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -403,6 +458,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -410,6 +466,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -431,6 +488,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2940">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -474,21 +532,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/batch_place_cell_r_inp.sh">
+    <entry file="file://$PROJECT_DIR$/test_local.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1530">
-          <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="798">
+          <caret line="463" column="67" selection-start-line="463" selection-start-column="67" selection-end-line="463" selection-end-column="67" />
+          <folding>
+            <element signature="e#25#52#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simulate_place_cell_subtr_inh_r_inp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="303" column="0" selection-start-line="303" selection-start-column="0" selection-end-line="303" selection-end-column="0" />
+        <state relative-caret-position="895">
+          <caret line="458" column="67" selection-start-line="406" selection-start-column="0" selection-end-line="458" selection-end-column="67" />
           <folding>
             <element signature="e#25#52#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulate_place_cell_subtr_inh.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_NMDAR_kinetics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="60" column="14" selection-start-line="57" selection-start-column="0" selection-end-line="60" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/batch_place_cell_subtr_inh.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/batch_place_cell_r_inp.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="102" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="102" selection-end-column="147" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/batch_place_cell_subtr_inh_vclamp.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="102" column="136" selection-start-line="102" selection-start-column="136" selection-end-line="102" selection-end-column="136" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulate_place_cell_subtr_inh_vclamp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

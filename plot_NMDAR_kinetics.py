@@ -53,10 +53,12 @@ local_random.seed(0)
 syn = local_random.choice(syn_list)
 syn.source.play(spike_times)
 sim.append_rec(cell, syn.node, object=syn.target(NMDA_type), param='_ref_g', description='g')
+sim.append_rec(cell, trunk, loc=1.)
 
 clamp = h.SEClamp(trunk.sec(1.))
 clamp.dur1=duration
-clamp.rs = 0.015
+# clamp.rs = 0.015
+clamp.rs = 15.
 vc_range = np.arange(-70., 0., 10.)
 
 results = {}
