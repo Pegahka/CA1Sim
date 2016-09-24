@@ -198,8 +198,8 @@ def run_trial(simiter):
         # save the sums of recorded membrane conductances
         for param in ['g_h', 'gka_kap']:
             f[str(simiter)]['g_sum'].create_dataset(param, compression='gzip', compression_opts=9,
-                                                    data=np.sum([rec['vec'] for rec in sim.rec_list if
-                                                                 rec['description'] == param], axis=0))
+                                                    data=np.sum([np.array(rec[param].to_python()) * rec['area'] * 1.e-8
+                                                                 for rec in local_rec_list if param in rec], axis=0))
         # save the spike output of the cell, removing the equilibration offset
         f[str(simiter)].create_dataset('output', compression='gzip', compression_opts=9,
                                     data=np.subtract(cell.spike_detector.get_recordvec().to_python(),
@@ -312,11 +312,14 @@ sim.parameters['stim_dt'] = stim_dt
 sim.append_rec(cell, cell.tree.root, description='soma', loc=0.)
 sim.append_rec(cell, trunk_bifurcation[0], description='proximal_trunk', loc=1.)
 sim.append_rec(cell, trunk, description='distal_trunk', loc=1.)
+local_rec_list = []
 for node in cell.soma+cell.axon+cell.basal+cell.trunk+cell.apical:
     for param in ['g_h', 'gka_kap']:
         if hasattr(node.sec, param):
             for seg in [seg for seg in node.sec if cell.get_distance_to_node(cell.tree.root, node, loc=seg.x) <= 50.]:
-                sim.append_rec(cell, node, loc=seg.x, object=seg, param='_ref_'+param, description=param)
+                this_rec_dict = {param: h.Vector(), 'area': seg.area()}
+                this_rec_dict[param].record(getattr(seg, '_ref_'+param))
+                local_rec_list.append(this_rec_dict)
 spike_output_vec = h.Vector()
 cell.spike_detector.record(spike_output_vec)
 

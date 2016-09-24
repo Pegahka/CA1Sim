@@ -18,7 +18,8 @@ from neuron import h  # must be found in system $PYTHONPATH
 
 #---------------------------------------Some global variables and functions------------------------------
 
-data_dir = 'data/'
+#data_dir = 'data/'
+data_dir = '/Users/milsteina/PycharmProjects/NEURON/data/'
 morph_dir = 'morphologies/'
 
 freq = 100      # Hz, frequency at which AC length constant will be computed
@@ -1904,6 +1905,72 @@ def process_i_syn_rec(rec_filename, description_list=['i_AMPA', 'i_NMDA', 'i_GAB
         return rec_t, group_mean_dict, group_mean_low_pass_dict
 
 
+def get_low_pass_recs(rec_filename, dt=0.02):
+    """
+    This method returns the averaged low-pass filtered waveform across trials for each recording.
+    :param rec_filename: str
+    :param dt: float
+    :return: dict
+    """
+    with h5py.File(data_dir+rec_filename+'.hdf5', 'r') as f:
+        sim = f.itervalues().next()
+        equilibrate = sim.attrs['equilibrate']
+        track_equilibrate = sim.attrs['track_equilibrate']
+        duration = sim.attrs['duration']
+        track_duration = duration - equilibrate - track_equilibrate
+        t = np.arange(0., duration, dt)
+        rec_t = np.arange(0., track_duration, dt)
+        start = int((equilibrate + track_equilibrate) / dt)
+        low_pass_rec_dict = {}
+        for trial in f.itervalues():
+            for rec in trial['rec'].itervalues():
+                key = rec.attrs['description']
+                if key not in low_pass_rec_dict:
+                    low_pass_rec_dict[key] = []
+                    interp_rec = np.interp(t, trial['time'], rec)
+                    low_pass_rec = low_pass_filter(interp_rec[start:], 2., track_duration, dt)
+                    low_pass_rec_dict[key].append(low_pass_rec)
+        low_pass_mean_dict = {}
+        for key in low_pass_rec_dict:
+            low_pass_mean_dict[key] = np.mean([rec for rec in low_pass_rec_dict[key]], axis=0)
+        return rec_t, low_pass_mean_dict
+
+
+def get_low_pass_special_recs(rec_filename, group='g_sum', labels=['g_h', 'gka_kap'], dt=0.02):
+    """
+    Expects simulation files that contain a special group containing processed recordings (ie sum of perisomatic g_h).
+    This method returns the averaged low-pass filtered waveform across trials for each type of special recording.
+    :param rec_filename: str
+    :param group: str
+    :param labels: list of str
+    :param dt: float
+    :return: dict
+    """
+    with h5py.File(data_dir+rec_filename+'.hdf5', 'r') as f:
+        sim = f.itervalues().next()
+        equilibrate = sim.attrs['equilibrate']
+        track_equilibrate = sim.attrs['track_equilibrate']
+        duration = sim.attrs['duration']
+        track_duration = duration - equilibrate - track_equilibrate
+        t = np.arange(0., duration, dt)
+        rec_t = np.arange(0., track_duration, dt)
+        start = int((equilibrate + track_equilibrate) / dt)
+        low_pass_rec_dict = {}
+        for trial in f.itervalues():
+            if group in trial:
+                for key in labels:
+                    if key not in low_pass_rec_dict:
+                        low_pass_rec_dict[key] = []
+                    if key in trial[group]:
+                        rec = np.interp(t, trial['time'], trial[group][key])
+                        low_pass_rec = low_pass_filter(rec[start:], 2., track_duration, dt)
+                        low_pass_rec_dict[key].append(low_pass_rec)
+        low_pass_mean_dict = {}
+        for key in low_pass_rec_dict:
+            low_pass_mean_dict[key] = np.mean([rec for rec in low_pass_rec_dict[key]], axis=0)
+        return rec_t, low_pass_mean_dict
+
+
 def process_special_rec_within_group(rec_filename, group_name='pre',
                                      description_list=['soma', 'proximal_trunk', 'distal_trunk'], dt=0.02):
     """
@@ -2176,7 +2243,7 @@ def low_pass_filter(source, freq, duration, dt):
 
 def general_filter_trace(t, source, filter, duration, dt):
     """
-    Filters the source waveform at the provided frequency.
+    Filters the source waveform with the provided filter.
     :param t: array
     :param source: array
     :param filter: 'signal.firwin'

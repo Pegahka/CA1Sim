@@ -34,7 +34,7 @@ ASSIGNED {
     i       (mA/cm2)
     linf
     taul
-    g
+    g 		(mho/cm2)
     celsius (degC)
 }
 
