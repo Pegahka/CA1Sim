@@ -18,8 +18,8 @@ from neuron import h  # must be found in system $PYTHONPATH
 
 #---------------------------------------Some global variables and functions------------------------------
 
-#data_dir = 'data/'
-data_dir = '/Users/milsteina/PycharmProjects/NEURON/data/'
+data_dir = 'data/'
+#data_dir = '/Users/milsteina/PycharmProjects/NEURON/data/'
 morph_dir = 'morphologies/'
 
 freq = 100      # Hz, frequency at which AC length constant will be computed
