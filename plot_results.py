@@ -3482,6 +3482,83 @@ def plot_place_field_summmary_across_cells(rec_t, mean_theta_envelope, binned_t,
         mpl.rcParams['font.size'] = remember_font_size
 
 
+def plot_parameter_across_cells(rec_t, parameter_dict, parameter_title=None, ylabel=None, conditions=None, nested_key=None,
+                                colors=None, subtract_baseline=False, baseline_range=[0., 600.], dt=0.02,
+                                svg_title=None):
+    """
+    Generic method for plotting mean and variance of a parameter recorded from multiple simulations with different
+    random seeds. Assumes a dict with structure {seed: {'condition': value}}.
+    Expects the output of process_patterned_input_simulation.
+    Produces summary plots for ramp, variance, theta, and firing rate depicting mean and SEM across cells.
+    :param rec_t: array
+    :param parameter_dict: dict of dict of array
+    :param parameter_title: str
+    :param ylabel: str
+    :param conditions: list of tuple
+    :param nested_key: str
+    :param colors: list of tuple
+    :param subtract_baseline: bool
+    :param baseline_range: list of float
+    :param dt: float
+    :param svg_title: str
+    """
+    if svg_title is not None:
+        remember_font_size = mpl.rcParams['font.size']
+        mpl.rcParams['font.size'] = 8
+    if conditions is None:
+        conditions = [('modinh0', 'Control'), ('modinh3', 'Reduced inhibition')]
+    condition_keys = [item[0] for item in conditions]
+    condition_labels = [item[1] for item in conditions]
+    if colors is None:
+        colors = [('k', 'grey'), ('orange', 'orange')]
+    seeds = parameter_dict.keys()
+    if nested_key is None:
+        parameter = dict(parameter_dict)
+    elif nested_key in parameter_dict.itervalues().next().itervalues().next().keys():
+        parameter = {seed: {condition: parameter_dict[seed][condition][nested_key] for condition in condition_keys}
+                     for seed in seeds}
+    else:
+        print nested_key, 'not a key within the provided dictionary.'
+        return None
+    parameter['mean'], parameter['var'] = {}, {}
+    for condition in condition_keys:
+        parameter['mean'][condition] = np.mean([parameter[seed][condition] for seed in seeds], axis=0)
+        parameter['var'][condition] = np.var([parameter[seed][condition] for seed in seeds], axis=0)
+    fig, axes = plt.subplots(1)
+    if subtract_baseline:
+        baseline = np.mean(parameter['mean'][condition_keys[0]][int(baseline_range[0]/dt):int(baseline_range[1]/dt)])
+        for condition in condition_keys:
+            parameter['mean'][condition] -= baseline
+    for i, (condition, title) in enumerate(conditions):
+        this_mean = parameter['mean'][condition]
+        this_variance = parameter['var'][condition]
+        this_SEM = np.divide(np.sqrt(this_variance), np.sqrt(float(len(seeds))))
+        axes.plot(rec_t, np.subtract(this_mean, this_SEM), color=colors[i][1])
+        axes.plot(rec_t, np.add(this_mean, this_SEM), color=colors[i][1])
+        axes.plot(rec_t, this_mean, color=colors[i][0], label=title)
+    clean_axes(axes)
+    axes.set_xlabel('Time (s)')
+    if ylabel is not None:
+        axes.set_ylabel(ylabel)
+    # axes.set_ylim(-0.8, 10.)
+    axes.set_xlim(0., 7500.)
+    axes.set_xticks([0., 1500., 3000., 4500., 6000., 7500.])
+    axes.set_xticklabels([0, 1.5, 3, 4.5, 6, 7.5])
+    axes.tick_params(direction='out')
+    plt.legend(loc='best', frameon=False, framealpha=0.5, fontsize=mpl.rcParams['font.size'])
+    if parameter_title is not None:
+        axes.set_title(parameter_title)
+    if svg_title is not None:
+        fig.set_size_inches(1.3198, 1.2169)
+        if parameter_title is None:
+            parameter_title = ''
+        fig.savefig(data_dir+svg_title+' - Summary - ' + parameter_title + '.svg', format='svg', transparent=True)
+    plt.show()
+    plt.close()
+    if svg_title is not None:
+        mpl.rcParams['font.size'] = remember_font_size
+
+
 def plot_phase_precession(t_array, phase_array, title, fit_start=3600., fit_end=5400., display_start=0.,
                           display_end=7500., bin_size=60., num_bins=5, svg_title=None, plot=True, adjust=True):
     """
