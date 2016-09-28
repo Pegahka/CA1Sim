@@ -3482,9 +3482,9 @@ def plot_place_field_summmary_across_cells(rec_t, mean_theta_envelope, binned_t,
         mpl.rcParams['font.size'] = remember_font_size
 
 
-def plot_parameter_across_cells(rec_t, parameter_dict, parameter_title=None, ylabel=None, conditions=None, nested_key=None,
-                                colors=None, subtract_baseline=False, baseline_range=[0., 600.], dt=0.02,
-                                svg_title=None):
+def plot_parameter_across_cells(rec_t, parameter_dict, parameter_title=None, ylabel=None, conditions=None,
+                                nested_key=None, colors=None, subtract_baseline=False, baseline_range=[0., 600.],
+                                dt=0.02, svg_title=None):
     """
     Generic method for plotting mean and variance of a parameter recorded from multiple simulations with different
     random seeds. Assumes a dict with structure {seed: {'condition': value}}.
