@@ -3378,7 +3378,7 @@ def plot_place_field_summmary_across_cells(rec_t, mean_theta_envelope, binned_t,
         for condition in key_list:
             parameter['mean'][condition] = np.mean([parameter[group][condition] for group in groups], axis=0)
             parameter['var'][condition] = np.var([parameter[group][condition] for group in groups], axis=0)
-
+    """
     fig, axes = plt.subplots(1)
     baseline = np.mean(mean_ramp['mean'][key_list[0]][int(baseline_range[0]/dt):int(baseline_range[1]/dt)])
     for i, (condition, title) in enumerate(zip(key_list, titles)):
@@ -3393,7 +3393,7 @@ def plot_place_field_summmary_across_cells(rec_t, mean_theta_envelope, binned_t,
     clean_axes(axes)
     axes.set_xlabel('Time (s)')
     axes.set_ylabel('DVm (mV)')
-    axes.set_ylim(-0.8, 10.)
+    axes.set_ylim(-1., 12.)
     axes.set_xlim(0., 7500.)
     axes.set_xticks([0., 1500., 3000., 4500., 6000., 7500.])
     axes.set_xticklabels([0, 1.5, 3, 4.5, 6, 7.5])
@@ -3416,7 +3416,7 @@ def plot_place_field_summmary_across_cells(rec_t, mean_theta_envelope, binned_t,
     clean_axes(axes)
     axes.set_xlabel('Time (s)')
     axes.set_ylabel('Thetaintra (mV)')
-    axes.set_ylim(0., 3.)
+    axes.set_ylim(0., 4.)
     axes.set_xlim(0., 7500.)
     axes.set_xticks([0., 1500., 3000., 4500., 6000., 7500.])
     axes.set_xticklabels([0, 1.5, 3, 4.5, 6, 7.5])
@@ -3441,7 +3441,8 @@ def plot_place_field_summmary_across_cells(rec_t, mean_theta_envelope, binned_t,
     clean_axes(axes)
     axes.set_xlabel('Time (s)')
     axes.set_ylabel('Firing rate (Hz)')
-    axes.set_ylim(-3., 40.)
+    # axes.set_ylim(-5., 60.)
+    axes.set_ylim(-1., 5.)
     axes.set_xlim(0., 7500.)
     axes.set_xticks([0., 1500., 3000., 4500., 6000., 7500.])
     axes.set_xticklabels([0, 1.5, 3, 4.5, 6, 7.5])
@@ -3477,7 +3478,7 @@ def plot_place_field_summmary_across_cells(rec_t, mean_theta_envelope, binned_t,
         fig.savefig(data_dir + svg_title + ' - Summary - Variance.svg', format='svg', transparent=True)
     plt.show()
     plt.close()
-
+    """
     if svg_title is not None:
         mpl.rcParams['font.size'] = remember_font_size
 

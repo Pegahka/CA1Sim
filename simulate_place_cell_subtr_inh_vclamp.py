@@ -11,8 +11,8 @@ phases within each theta cycle that each input is active, which will reduce jitt
 """
 morph_filename = 'EB2-late-bifurcation.swc'
 
-mech_filename = '043016 Type A - km2_NMDA_KIN5_Pr'
-
+#mech_filename = '043016 Type A - km2_NMDA_KIN5_Pr'
+mech_filename = '093016 Cesium Internal for VC'
 
 if len(sys.argv) > 1:
     synapses_seed = int(sys.argv[1])
@@ -44,7 +44,7 @@ else:
 
 rec_filename = 'output'+datetime.datetime.today().strftime('%m%d%Y%H%M')+'-pid'+str(os.getpid())+'-seed'+\
                str(synapses_seed)+'-e'+str(num_exc_syns)+'-i'+str(num_inh_syns)+'-subtr_mod_inh'+str(mod_inh)+\
-               '-VC_'+str(VC_command)+'_'+str(trial_seed)
+               '-VC_Cs_'+str(VC_command)+'_'+str(trial_seed)
 
 
 def get_dynamic_theta_phase_force(phase_ranges, peak_loc, input_field_duration, stim_t, dt):
