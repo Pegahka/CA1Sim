@@ -3488,9 +3488,8 @@ def plot_parameter_across_cells(rec_t, parameter_dict, parameter_title=None, yla
                                 dt=0.02, svg_title=None):
     """
     Generic method for plotting mean and variance of a parameter recorded from multiple simulations with different
-    random seeds. Assumes a dict with structure {seed: {'condition': value}}.
-    Expects the output of process_patterned_input_simulation.
-    Produces summary plots for ramp, variance, theta, and firing rate depicting mean and SEM across cells.
+    random seeds. Assumes a dict with structure {seed: {'condition': value}}, for example the output of
+    get_low_pass_recs().
     :param rec_t: array
     :param parameter_dict: dict of dict of array
     :param parameter_title: str
