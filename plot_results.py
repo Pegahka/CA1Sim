@@ -3077,7 +3077,7 @@ def process_patterned_input_simulation_fix_bins(rec_filename, title, dt=0.02):
     return scatter_vm_mean, scatter_vm_var, binned_t, mean_binned_vm, mean_binned_var
 
 
-def plot_patterned_input_individual_trial_traces(rec_t, vm_array, theta_traces, ramp_traces, index=None,
+def plot_patterned_input_individual_trial_traces(rec_t, vm_array, theta_traces, ramp_traces, residuals, index=None,
                                                  svg_title=None):
     """
     Accepts the output of get_patterned_input_component_traces, and either saves a single figure, or cycles through a
@@ -3086,6 +3086,7 @@ def plot_patterned_input_individual_trial_traces(rec_t, vm_array, theta_traces, 
     :param vm_array: list of array
     :param theta_traces: list of array
     :param ramp_traces: list of array
+    :param residuals: list of array
     :param index: int
     :param svg_title: str
     """
@@ -3097,7 +3098,7 @@ def plot_patterned_input_individual_trial_traces(rec_t, vm_array, theta_traces, 
     else:
         index_range = range(len(vm_array))
     for i in index_range:
-        fig, axes = plt.subplots(3, sharey=True, sharex=True)
+        fig, axes = plt.subplots(4, sharey=True, sharex=True)
         label_handles = []
         axes[0].plot(rec_t, vm_array[i], color='k', label='Raw Vm')
         axes[0].set_axis_off()
@@ -3109,9 +3110,12 @@ def plot_patterned_input_individual_trial_traces(rec_t, vm_array, theta_traces, 
         label_handles.append(mlines.Line2D([], [], color='c', label='Theta Vm'))
         axes[2].set_xlim(0., 7500.)
         axes[2].set_ylim(-67., 30.)
+        axes[2].set_axis_off()
+        axes[3].plot(rec_t, residuals[i], color='purple', label='Residual Vm')
+        label_handles.append(mlines.Line2D([], [], color='purple', label='Residual Vm'))
         clean_axes(axes)
         if svg_title is not None:
-            #axes[1].legend(handles=label_handles, loc='best', frameon=False, framealpha=0.5,
+            axes[1].legend(handles=label_handles, loc='best', frameon=False, framealpha=0.5)
             # fontsize=mpl.rcParams['font.size'])
             fig.set_size_inches(2.7696, 3.1506)
             fig.savefig(data_dir+svg_title+str(i)+' - example traces.svg', format='svg', transparent=True)

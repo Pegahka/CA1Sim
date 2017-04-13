@@ -1641,8 +1641,10 @@ def get_patterned_input_component_traces(rec_filename, dt=0.02):
     pad_len = int(window_len/2.)
     theta_filter = signal.firwin(window_len, [5., 10.], nyq=1000./2./down_dt, pass_zero=False)
     ramp_filter = signal.firwin(window_len, 2., nyq=1000./2./down_dt)
+    slow_vm_filter = signal.firwin(window_len, .2, nyq=1000. / 2. / down_dt)
     theta_traces = []
     ramp_traces = []
+    residuals = []
     for trace in spikes_removed:
         down_sampled = np.interp(down_t, rec_t, trace)
         padded_trace = np.zeros(len(down_sampled)+window_len)
@@ -1651,13 +1653,18 @@ def get_patterned_input_component_traces(rec_filename, dt=0.02):
         padded_trace[-pad_len:] = down_sampled[::-1][:pad_len]
         filtered = signal.filtfilt(theta_filter, [1.], padded_trace, padlen=pad_len)
         filtered = filtered[pad_len:-pad_len]
-        up_sampled = np.interp(rec_t, down_t, filtered)
-        theta_traces.append(up_sampled)
+        this_theta_trace = np.interp(rec_t, down_t, filtered)
+        theta_traces.append(this_theta_trace)
         filtered = signal.filtfilt(ramp_filter, [1.], padded_trace, padlen=pad_len)
         filtered = filtered[pad_len:-pad_len]
         up_sampled = np.interp(rec_t, down_t, filtered)
         ramp_traces.append(up_sampled)
-    return rec_t, vm_array, theta_traces, ramp_traces
+        filtered = signal.filtfilt(slow_vm_filter, [1.], padded_trace, padlen=pad_len)
+        filtered = filtered[pad_len:-pad_len]
+        up_sampled = np.interp(rec_t, down_t, filtered)
+        this_residual = trace - this_theta_trace - up_sampled
+        residuals.append(this_residual)
+    return rec_t, vm_array, theta_traces, ramp_traces, residuals
 
 
 def alternative_binned_vm_variance_analysis(rec_filename, dt=0.02):
