@@ -998,7 +998,7 @@ def get_removed_spikes(rec_filename, before=1.6, after=6., dt=0.02, th=10., plot
             start = int((equilibrate + track_equilibrate) / dt)
             t = np.subtract(t[start:], equilibrate + track_equilibrate)
             vm = vm[start:]
-            dvdt = np.gradient(vm, [dt])
+            dvdt = np.gradient(vm, dt)
             crossings = np.where(dvdt >= th)[0]
             if not np.any(crossings):
                 removed.append(vm)
@@ -1080,7 +1080,7 @@ def get_removed_spikes_alt(rec_filename, before=1.6, after=6., dt=0.02, th=10., 
             start = int((equilibrate + track_equilibrate) / dt)
             t = np.subtract(t[start:], equilibrate + track_equilibrate)
             vm = vm[start:]
-            dvdt = np.gradient(vm, [dt])
+            dvdt = np.gradient(vm, dt)
             crossings = np.where(dvdt >= th)[0]
             if not np.any(crossings):
                 removed.append(vm)
@@ -1145,7 +1145,7 @@ def get_removed_spikes_live(vm, t, before=1.6, after=6., dt=0.02, th=10., plot=1
     :return: array
     """
     temp_vm = np.array(vm)
-    dvdt = np.gradient(vm, [dt])
+    dvdt = np.gradient(vm, dt)
     crossings = np.where(dvdt >= th)[0]
     if not np.any(crossings):
         removed = np.array(vm)
@@ -1222,7 +1222,7 @@ def get_removed_spikes_nangaps(rec_filename, before=1.6, after=6., dt=0.02, th=1
             start = int((equilibrate + track_equilibrate) / dt)
             t = np.subtract(t[start:], equilibrate + track_equilibrate)
             vm = vm[start:]
-            dvdt = np.gradient(vm, [dt])
+            dvdt = np.gradient(vm, dt)
             crossings = np.where(dvdt >= th)[0]
             if not np.any(crossings):
                 removed_interp.append(vm)
